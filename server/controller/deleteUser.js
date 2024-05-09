@@ -1,16 +1,14 @@
 const userModel = require("../models/userModel")
 
-const updateUser = async (req, res) => {
+const deleteUser = async (req, res) => {
     try {
-        const {id, ...rest} = req.body;
+        const id = req.params.id;
 
-        // console.log(rest);
-
-        const updateUser = await userModel.updateOne({ _id:  id}, rest)
+        const deleteUser = await userModel.deleteOne({_id: id})
 
         return res.status(200).json({
-            message: "Update user successfully",
-            data: updateUser,
+            message: "Delete user successfully",
+            data: deleteUser,
             error: false,
             success: true
         })
@@ -23,4 +21,4 @@ const updateUser = async (req, res) => {
     }
 }
 
-module.exports = updateUser;
+module.exports = deleteUser;

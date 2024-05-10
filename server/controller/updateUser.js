@@ -2,11 +2,11 @@ const userModel = require("../models/userModel")
 
 const updateUser = async (req, res) => {
     try {
-        const {id, ...rest} = req.body;
+        const {_id, ...rest} = req.body;
 
         // console.log(rest);
 
-        const updateUser = await userModel.updateOne({ _id:  id}, rest)
+        const updateUser = await userModel.updateOne({ _id:  _id}, rest)
 
         return res.status(200).json({
             message: "Update user successfully",
